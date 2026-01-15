@@ -1,0 +1,86 @@
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+    background-image: url("./sba-4-bg-img.JPG");
+    background-size: cover;
+    font-weight: bold;
+    /*color: white;*/
+}
+
+/*
+main{
+    display: flex;
+    flex-direction: column;   
+    align-items: center;   
+    gap: 15px;             
+    margin-top: 40px;
+}
+    */
+
+section{
+    display: flex;
+    flex-direction: column;  
+    align-items: center; 
+    gap: 15px;             
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+
+.input {
+    font-size: 1.5rem;
+    border: 3px solid grey;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.label{
+      font-size: 1.5rem;
+      gap: none;
+}
+
+select {
+  color: #6b7280;
+}
+
+select:focus,
+select:valid {
+  color: #111;
+}
+
+button{
+     font-size: 1.5rem;
+     font-weight: bold;
+    border: 3px solid grey;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding: 3px 15px 3px 15px;
+
+}
+
+#taskname{
+        margin-bottom: 30px;
+}
+
+
+#status{
+    margin-bottom: 30px;
+}
+
+
+#taskList {
+  /*border: 3px solid red;*/
+  background-color: #f9fafb;
+  border: 5px solid #f9fafb;
+  border-radius: 15px;
+  width: 60%;
+  min-height: 400px; 
+  margin-top: 30px;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 12px 30px rgba(0.12, 0.12, 0.12, 0.12);
+}
+
