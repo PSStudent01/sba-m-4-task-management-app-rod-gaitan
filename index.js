@@ -1,6 +1,4 @@
 
-
-
 let tasks = []
 
 let btnEl = document.querySelector("button")
@@ -34,7 +32,7 @@ return newTask
 
 function renderTask(){
     inputEl.value = ""  // go back to this as it is not clearing my fields once I click the button!!!!!!
-    taskList.innerHTML = "" //clears the list so it can be re-rendered without duplicating items
+    taskListEl.innerHTML = "" //clears the list so it can be re-rendered without duplicating items
 
 
     for (i=0; i < tasks.length; i++ ){
