@@ -31,26 +31,60 @@ return newTask
 
 
 function renderTask(){
-    inputEl.value = ""  // go back to this as it is not clearing my fields once I click the button!!!!!!
+    //inputEl.value = ""  go back to this as it is not clearing my fields once I click the button!!!!!!
     taskListEl.innerHTML = "" //clears the list so it can be re-rendered without duplicating items
 
 
-    for (i=0; i < tasks.length; i++ ){
+    for (let i=0; i < tasks.length; i++ ){
         let liEl = document.createElement("li")
         /*liEl.textContent = tasks[i]*/
-        liEl.textContent =
-            /*
-            `tasks[i].category
-            tasks[i].task
-            tasks[i].deadline
-            tasks[i].status`
-            */                                  // come back to create spaces in between rendered item objects!!!!
-            `Category: ${tasks[i].category};  
-            Task name: ${tasks[i].task};
-            Deadline: ${tasks[i].deadline};
-            Status: ${tasks[i].status}`
+
+        /*    
+        liEl.textContent =                         // come back to create spaces in between rendered item objects!!!!
+            `Category: ${tasks[i].category};<br>             
+            Task name: ${tasks[i].task};<br>
+            Deadline: ${tasks[i].deadline};<br>
+            Status: ${tasks[i].status};<br>`
 
         taskListEl.appendChild(liEl)
+        */
+
+        liEl.innerHTML =    
+            `<strong>Category</strong>: ${tasks[i].category};<br>             
+            <strong>Task name</strong>: ${tasks[i].task};<br>
+            <strong>TDeadline</strong>: ${tasks[i].deadline};<br>
+            <strong>Status</strong>: ${tasks[i].status};<br>
+        `
+
+        let selectEl = document.createElement("select");
+
+
+        
+        let statuses = ["inprogress", "completed", "overdue"]
+
+        statuses.forEach(status => {                        // for each an every 'status' in 'statuses' array....
+            let option = document.createElement("option");  // create an 'option' html element on-the-fly
+            option.value = status;  //then insert the 'status' value into the 'option' element
+            //option.textContent = status.charAt(0).toUpperCase() + status.slice(1); //Capitalizes each status option
+            if (tasks[i].status === status) option.selected = true; //if the option in 'tasks' array equals the option selected by user..
+            selectEl.appendChild(option);   //...then display the option selected
+        })
+
+
+          selectEl.addEventListener("change", function() {  //adding an event listener to the selection box 'selectEl' that when option is 'changed' it calls an internal function() 'updateStatus'
+            updateStatus(i, this.value);   //...changes the status to the want desired
+         });
+
+         function updateStatus(index, newStatus) {
+         tasks[index].status = newStatus;
+        renderTask();
+}
+
+
+         liEl.appendChild(selectEl);
+         taskListEl.appendChild(liEl);
+
     }
+        
 
 }

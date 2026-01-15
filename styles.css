@@ -85,3 +85,9 @@ button{
   box-shadow: 0 12px 30px rgba(0.12, 0.12, 0.12, 0.12);
 }
 
+li{
+    /*border: 3px solid red;*/
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+
+}
