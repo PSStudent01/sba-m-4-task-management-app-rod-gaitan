@@ -20,7 +20,6 @@ body {
     /*color: white;*/
 }
 
-    
 /*
 main{
     display: flex;
@@ -29,7 +28,8 @@ main{
     gap: 15px;             
     margin-top: 40px;
 }
-    */
+*/
+
 
 section{
     display: flex;
@@ -41,12 +41,14 @@ section{
 
 h1 {
     font-size: 3rem;
+    color: purple;
+    /*font-family:Georgia, 'Times New Roman', Times, serif;*/
 }
 
 
 .input {
     font-size: 1.5rem;
-    border: 3px solid grey;
+    border: 3px solid lightgray;
     border-radius: 5px;
     margin-bottom: 5px;
 }
@@ -68,7 +70,7 @@ select:valid {
 button, #search-btn{
     font-size: 1.5rem;
     font-weight: bold;
-    border: 3px solid grey;
+    border: 3px solid lightgray;
     border-radius: 5px;
     margin-bottom: 30px;
     padding: 3px 15px 3px 15px;
@@ -112,7 +114,11 @@ button:hover, #search-btn:hover {
   padding: 15px;
   list-style: none;
   box-shadow: 0 12px 30px rgba(0.12, 0.12, 0.12, 0.12);
+
+  max-height: 400px;        /* choose what feels right */
+  overflow-y: auto;         /* scroll inside the list */
 }
+
 
 
 li{
