@@ -1,4 +1,17 @@
 
+/*
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+    background-image: url("./sba-4-bg-img.JPG");
+    background-size: cover;
+    font-weight: bold;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+      min-height: 100vh;
+}
+*/
+
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
     background-image: url("./sba-4-bg-img.JPG");
@@ -7,6 +20,7 @@ body {
     /*color: white;*/
 }
 
+    
 /*
 main{
     display: flex;

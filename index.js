@@ -93,7 +93,6 @@ function searchBy(){
 }
 */
 
-
 function searchBy() {
     const selectedStatus = document.getElementById("search").value
 
@@ -112,9 +111,6 @@ function searchBy() {
         }
     }
 }
-
-
-
 
 
 function renderTask() {
