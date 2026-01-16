@@ -50,10 +50,10 @@ function renderTask(){
         */
 
         liEl.innerHTML =    
-            `<strong>Category</strong>: ${tasks[i].category};<br>             
-            <strong>Task name</strong>: ${tasks[i].task};<br>
-            <strong>TDeadline</strong>: ${tasks[i].deadline};<br>
-            <strong>Status</strong>: ${tasks[i].status};<br>
+            `<strong>Category</strong>: ${tasks[i].category}<br>             
+            <strong>Task name</strong>: ${tasks[i].task}<br>
+            <strong>Deadline</strong>: ${tasks[i].deadline}<br>
+            <strong>Status</strong>: ${tasks[i].status}<br>
         `
 
         let selectEl = document.createElement("select");
@@ -65,7 +65,8 @@ function renderTask(){
         statuses.forEach(status => {                        // for each an every 'status' in 'statuses' array....
             let option = document.createElement("option");  // create an 'option' html element on-the-fly
             option.value = status;  //then insert the 'status' value into the 'option' element
-            //option.textContent = status.charAt(0).toUpperCase() + status.slice(1); //Capitalizes each status option
+            //option.textContent = status.charAt(0).toUpperCase() + status.slice(1); // Capitalizes each status option while ensuring that all 3 options actually populate in the option menu itself 
+            option.textContent = status; //ensures that all 3 options actually populate in the option menu itself 
             if (tasks[i].status === status) option.selected = true; //if the option in 'tasks' array equals the option selected by user..
             selectEl.appendChild(option);   //...then display the option selected
         })
@@ -77,6 +78,7 @@ function renderTask(){
 
          function updateStatus(index, newStatus) {
          tasks[index].status = newStatus;
+         console.log(tasks); // <-- updates 'tasks' array.
         renderTask();
 }
 

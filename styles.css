@@ -34,7 +34,7 @@ h1 {
     font-size: 1.5rem;
     border: 3px solid grey;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .label{
@@ -59,12 +59,20 @@ button{
     margin-bottom: 30px;
     padding: 3px 15px 3px 15px;
     background-color: blanchedalmond;
+    /*border: 3px solid blanchedalmond;*/
 
 }
 
+button:hover {
+    background-color: #f2d7b5;
+}
+
+
+/*
 #taskname{
         margin-bottom: 30px;
 }
+*/
 
 
 #status{
@@ -80,14 +88,31 @@ button{
   width: 60%;
   min-height: 400px; 
   margin-top: 30px;
-  padding: 0;
+  padding: 15px;
   list-style: none;
   box-shadow: 0 12px 30px rgba(0.12, 0.12, 0.12, 0.12);
 }
 
 li{
     /*border: 3px solid red;*/
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: lighter;
 
+}
+
+
+.inputlblbx{
+  display: flex;
+    flex-direction: column;  
+    align-items: center; 
+    gap: 5px;             
+
+
+}
+
+.inputlblbx .input{
+    /*border: 5px solid red;*/
+    padding: 3px 0 3px 2px;
+    font-size: 1.5rem;
 }
