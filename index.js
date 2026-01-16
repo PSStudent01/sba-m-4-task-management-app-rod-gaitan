@@ -2,9 +2,10 @@
 let tasks = []
 
 let btnEl = document.querySelector("button")
+let btnElTwo = document.getElementById("search-btn")
 let taskListEl = document.getElementById("taskList")
-let inputEl = document.getElementsByClassName("input")
-
+let inputEl = document.getElementsByClassName("input")   
+let taskListElTwo = document.getElementById("searchdisplay")
 
 
 btnEl.addEventListener("click", addNewtask)
@@ -51,6 +52,70 @@ function checkOverDueTasks() {
 
 }
 
+btnElTwo.addEventListener("click", searchBy)
+/*
+function searchBy(){
+    taskListElTwo.innerHTML = "" 
+    for (let i = 0; i < tasks.length; i++) {
+        if(tasks[i].status === "overdue" ){
+            let liElTwo = document.createElement("li")
+            liElTwo.innerHTML =
+            `<strong>Category</strong>: ${tasks[i].category}<br>             
+            <strong>Task name</strong>: ${tasks[i].task}<br>
+            <strong>Deadline</strong>: ${tasks[i].deadline}<br>
+            <strong>Status</strong>: ${tasks[i].status}<br>
+            `
+            taskListElTwo.appendChild(liElTwo)
+        } else if(tasks[i].status === "complete" ){
+            let liElTwo = document.createElement("li")
+            liElTwo.innerHTML =
+            `<strong>Category</strong>: ${tasks[i].category}<br>             
+            <strong>Task name</strong>: ${tasks[i].task}<br>
+            <strong>Deadline</strong>: ${tasks[i].deadline}<br>
+            <strong>Status</strong>: ${tasks[i].status}<br>
+            `
+            taskListElTwo.appendChild(liElTwo)  
+        }
+            else if(tasks[i].status === "inprogress" ){
+            let liElTwo = document.createElement("li")
+            liElTwo.innerHTML =
+            `<strong>Category</strong>: ${tasks[i].category}<br>             
+            <strong>Task name</strong>: ${tasks[i].task}<br>
+            <strong>Deadline</strong>: ${tasks[i].deadline}<br>
+            <strong>Status</strong>: ${tasks[i].status}<br>
+            `
+            taskListElTwo.appendChild(liElTwo)  
+    
+
+        }
+    }
+
+}
+*/
+
+
+function searchBy() {
+    const selectedStatus = document.getElementById("search").value
+
+    taskListElTwo.innerHTML = ""
+
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].status === selectedStatus) {
+            let liElTwo = document.createElement("li")
+            liElTwo.innerHTML = `
+                <strong>Category</strong>: ${tasks[i].category}<br>
+                <strong>Task name</strong>: ${tasks[i].task}<br>
+                <strong>Deadline</strong>: ${tasks[i].deadline}<br>
+                <strong>Status</strong>: ${tasks[i].status}<br>
+            `
+            taskListElTwo.appendChild(liElTwo)
+        }
+    }
+}
+
+
+
+
 
 function renderTask() {
 
@@ -63,15 +128,6 @@ function renderTask() {
         let liEl = document.createElement("li")
         /*liEl.textContent = tasks[i]*/
 
-        /*    
-        liEl.textContent =                         // come back to create spaces in between rendered item objects!!!!
-            `Category: ${tasks[i].category};<br>             
-            Task name: ${tasks[i].task};<br>
-            Deadline: ${tasks[i].deadline};<br>
-            Status: ${tasks[i].status};<br>`
-
-        taskListEl.appendChild(liEl)
-        */
 
         liEl.innerHTML =
             `<strong>Category</strong>: ${tasks[i].category}<br>             
@@ -103,7 +159,7 @@ function renderTask() {
 
         function updateStatus(index, newStatus) {
             tasks[index].status = newStatus;
-            console.log(tasks); // <-- updates 'tasks' array.
+            console.log(tasks)
             renderTask();
         }
 

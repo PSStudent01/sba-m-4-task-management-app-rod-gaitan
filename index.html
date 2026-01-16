@@ -14,14 +14,14 @@
     <section>
       <h1>Task Management App</h1>
       <div class="inputlblbx">
-      <label for="category" class="label">Category: </label>
-      <select class="input" id="category" name="category" required>
-        <option value="" disabled selected>Select a category</option>
-        <option value="module1">Module 1</option>
-        <option value="module2">Module 2</option>
-        <option value="module3">Module 3</option>
-        <option value="module4">Module 4</option>
-      </select>
+        <label for="category" class="label">Category: </label>
+        <select class="input" id="category" name="category" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="module1">Module 1</option>
+          <option value="module2">Module 2</option>
+          <option value="module3">Module 3</option>
+          <option value="module4">Module 4</option>
+        </select>
       </div>
       <!--
       <label for="taskname" class="label" >Task Name: </label>
@@ -31,33 +31,49 @@
           <option value="sbas">SBAs</option>
           <option value="kbas">KBAs</option>
         </select> -->
-      
+
       <div class="inputlblbx">
-      <label for="taskname" class="label">Task Name: </label>
-      <input type="text" class="input" id="taskname" name="taskname" placeholder="Enter task name" required>
+        <label for="taskname" class="label">Task Name: </label>
+        <input type="text" class="input" id="taskname" name="taskname" placeholder="Enter task name" required>
       </div>
 
       <div class="inputlblbx">
-      <label for="deadline" class="label">Deadline: </label>
-      <input type="date" class="input" id="deadline" name="deadline">
+        <label for="deadline" class="label">Deadline: </label>
+        <input type="date" class="input" id="deadline" name="deadline">
       </div>
 
       <div class="inputlblbx">
-      <label for="status" class="label">Status: </label>
-      <select class="input" id="status" name="status" required>
-        <option value="" disabled selected>Select a status</option>
-        <option value="inprogress">In Progress</option>
-        <option value="completed">Completed</option>
-        <option value="overdue">Overdue</option>
-      </select>
+        <label for="status" class="label">Status: </label>
+        <select class="input" id="status" name="status" required>
+          <option value="" disabled selected>Select a status</option>
+          <option value="inprogress">In Progress</option>
+          <option value="completed">Completed</option>
+          <option value="overdue">Overdue</option>
+        </select>
       </div>
 
-      
       <ul id="taskList">
       </ul>
 
       <button>Add task</button>
 
+ 
+      <div class="inputlblbx">
+        <label for="search" class="label">Search By Status: </label>
+        <select class="input" id="search" name="search" required>
+          <option value="" disabled selected>Search by status </option>
+          <option value="inprogress">In Progress</option>
+          <option value="completed">Completed</option>
+          <option value="overdue">Overdue</option>
+        </select>
+      </div>
+
+        <button id="search-btn">Search</button>
+
+        <ul id="searchdisplay">
+        </ul>
+    
+    </section>
   </main>
   <script src="index.js"></script>
 </body>

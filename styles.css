@@ -34,7 +34,7 @@ h1 {
     font-size: 1.5rem;
     border: 3px solid grey;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .label{
@@ -51,9 +51,9 @@ select:valid {
   color: #111;
 }
 
-button{
-     font-size: 1.5rem;
-     font-weight: bold;
+button, #search-btn{
+    font-size: 1.5rem;
+    font-weight: bold;
     border: 3px solid grey;
     border-radius: 5px;
     margin-bottom: 30px;
@@ -63,10 +63,13 @@ button{
 
 }
 
-button:hover {
+button:hover, #search-btn:hover {
     background-color: #f2d7b5;
 }
 
+#search-btn{
+        margin-bottom: 1px;
+}
 
 /*
 #taskname{
@@ -74,24 +77,29 @@ button:hover {
 }
 */
 
-
+/*
 #status{
     margin-bottom: 30px;
 }
+*/
 
+#status{
+    margin-bottom: .5rem;
+}
 
-#taskList {
+#taskList, #searchdisplay {
   /*border: 3px solid red;*/
   background-color: #f9fafb;
   border: 5px solid #f9fafb;
   border-radius: 15px;
   width: 60%;
   min-height: 400px; 
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 15px;
   list-style: none;
   box-shadow: 0 12px 30px rgba(0.12, 0.12, 0.12, 0.12);
 }
+
 
 li{
     /*border: 3px solid red;*/
@@ -116,3 +124,4 @@ li{
     padding: 3px 0 3px 2px;
     font-size: 1.5rem;
 }
+
