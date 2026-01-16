@@ -6,36 +6,60 @@ let taskListEl = document.getElementById("taskList")
 let inputEl = document.getElementsByClassName("input")
 
 
+
 btnEl.addEventListener("click", addNewtask)
 
 function addNewtask(category, task, deadline, status) {
 
-let newTask = {
-category: document.getElementById("category").value,
-task: document.getElementById("taskname").value,
-deadline: document.getElementById("deadline").value,
-status: document.getElementById("status").value
-}
+    let newTask = {
+        category: document.getElementById("category").value,
+        task: document.getElementById("taskname").value,
+        deadline: document.getElementById("deadline").value,
+        status: document.getElementById("status").value
+    }
 
-tasks.push(newTask)
 
-console.log(newTask)
+    let assignmentDate = new Date(newTask.deadline + "T23:59:59").getTime();
+    if (assignmentDate < Date.now()) {
+        newTask.status = "overdue"
+        console.log(newTask.status)
+    }
 
-renderTask()
-
-return newTask
+    tasks.push(newTask)
+    console.log(newTask)
+    renderTask()
+    return newTask
 
 }
 
 //  console.log(addNewtask("Module 1", "Lab 1", "10-10-26", "completed"))
 
+function checkOverDueTasks() {
+    //let assignmentDateTwo  = new Date(newTask.deadline + "T23:59:59").getTime();
+    //let assignmentDateTwo  = new Date(tasks[2] + "T23:59:59").getTime();
+    for (let i = 0; i < tasks.length; i++) {
+        let assignmentDateTwo = new Date(tasks[i].deadline + "T23:59:59").getTime()
+        //console.log(assignmentDateTwo)
+        //if(tasks[i].deadline < Date.now()){ }
+        if (assignmentDateTwo < Date.now()) {
+            //checkOverDueTasks.status = "overdue"
+            tasks[i].status = "overdue"
+            //console.log(checkOverDueTasks.status)
+        }
 
-function renderTask(){
+    }
+
+}
+
+
+function renderTask() {
+
+    checkOverDueTasks()
     //inputEl.value = ""  go back to this as it is not clearing my fields once I click the button!!!!!!
     taskListEl.innerHTML = "" //clears the list so it can be re-rendered without duplicating items
 
 
-    for (let i=0; i < tasks.length; i++ ){
+    for (let i = 0; i < tasks.length; i++) {
         let liEl = document.createElement("li")
         /*liEl.textContent = tasks[i]*/
 
@@ -49,7 +73,7 @@ function renderTask(){
         taskListEl.appendChild(liEl)
         */
 
-        liEl.innerHTML =    
+        liEl.innerHTML =
             `<strong>Category</strong>: ${tasks[i].category}<br>             
             <strong>Task name</strong>: ${tasks[i].task}<br>
             <strong>Deadline</strong>: ${tasks[i].deadline}<br>
@@ -59,7 +83,7 @@ function renderTask(){
         let selectEl = document.createElement("select");
 
 
-        
+
         let statuses = ["inprogress", "completed", "overdue"]
 
         statuses.forEach(status => {                        // for each an every 'status' in 'statuses' array....
@@ -72,21 +96,41 @@ function renderTask(){
         })
 
 
-          selectEl.addEventListener("change", function() {  //adding an event listener to the selection box 'selectEl' that when option is 'changed' it calls an internal function() 'updateStatus'
+        selectEl.addEventListener("change", function () {  //adding an event listener to the selection box 'selectEl' that when option is 'changed' it calls an internal function() 'updateStatus'
             updateStatus(i, this.value);   //...changes the status to the want desired
-         });
-
-         function updateStatus(index, newStatus) {
-         tasks[index].status = newStatus;
-         console.log(tasks); // <-- updates 'tasks' array.
-        renderTask();
-}
+        });
 
 
-         liEl.appendChild(selectEl);
-         taskListEl.appendChild(liEl);
+        function updateStatus(index, newStatus) {
+            tasks[index].status = newStatus;
+            console.log(tasks); // <-- updates 'tasks' array.
+            renderTask();
+        }
+
+
+        liEl.appendChild(selectEl);
+        taskListEl.appendChild(liEl);
 
     }
-        
+
 
 }
+
+        /*
+
+        //////////////////////////// Scratchpad //////////////////////////////
+
+        console.log(Date.now())
+
+        const friendlyDate = new Date(Date.now()).toLocaleDateString();
+        console.log(friendlyDate);
+
+        console.log(new Date());
+        console.log(new Date(Date.now()));
+        console.log(new Date(Date.now()).toLocaleDateString());
+
+        console.log(date.getTime())
+        const deadlineTimestamp = new Date(task.deadline).getTime();
+
+        ///////////////////////////
+        */
