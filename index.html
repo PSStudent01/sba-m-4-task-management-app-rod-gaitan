@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Management App</title>
-
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <main>
     <section>
       <h1>Task Management App</h1>
+      <!--Category Input-->
       <div class="inputlblbx">
         <label for="category" class="label">Category: </label>
         <select class="input" id="category" name="category" required>
@@ -23,26 +21,17 @@
           <option value="module4">Module 4</option>
         </select>
       </div>
-    
-      <!--
-      <label for="taskname" class="label" >Task Name: </label>
-        <select class="input" id="taskname" name="taskname" required>
-          <option value="" disabled selected >Select a task</option>
-          <option value="labs">Labs</option>
-          <option value="sbas">SBAs</option>
-          <option value="kbas">KBAs</option>
-        </select> -->
-
+      <!--Task Name Input-->
       <div class="inputlblbx">
         <label for="taskname" class="label">Task Name: </label>
         <input type="text" class="input" id="taskname" name="taskname" placeholder="Enter task name" required>
       </div>
-
+      <!--Deadline Input-->
       <div class="inputlblbx">
         <label for="deadline" class="label">Deadline: </label>
         <input type="date" class="input" id="deadline" name="deadline">
       </div>
-
+      <!--Status Input-->
       <div class="inputlblbx">
         <label for="status" class="label">Status: </label>
         <select class="input" id="status" name="status" required>
@@ -52,12 +41,12 @@
           <option value="overdue">Overdue</option>
         </select>
       </div>
-
+      <!--Task List Output-->
       <ul id="taskList">
       </ul>
-
+      <!--Add Task Button-->
       <button>Add task</button>
-
+      <!--Search By Status Input-->
       <div class="inputlblbx">
         <label for="search" class="label">Search By Status: </label>
         <select class="input" id="search" name="search" required>
@@ -67,16 +56,13 @@
           <option value="overdue">Overdue</option>
         </select>
       </div>
-
-        <button id="search-btn">Search</button>
-
-        <ul id="searchdisplay">
-        </ul>
-    
-    </section> 
-
+      <!--Search Button-->
+      <button id="search-btn">Search</button>
+      <!--Search Output-->
+      <ul id="searchdisplay">
+      </ul>
+    </section>
   </main>
   <script src="index.js"></script>
 </body>
-
 </html>
