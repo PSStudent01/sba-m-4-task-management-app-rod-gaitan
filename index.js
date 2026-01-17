@@ -1,46 +1,31 @@
-
+// declaring the 'tasks' array
 let tasks = []
 
+// grabbing the needed elements, some by ID, and others by tag name an dthen storing them into separate variables for future manipulation
 let btnEl = document.querySelector("button")
 let btnElTwo = document.getElementById("search-btn")
 let taskListEl = document.getElementById("taskList")
-let inputEl = document.getElementsByClassName("input")   
+let inputEl = document.getElementsByClassName("input")
 let taskListElTwo = document.getElementById("searchdisplay")
 
 
-// LS-1: Load tasks from local storage into array, if available
+// LS-1: loading tasks from local storage into array, if available
 let savedTasks = localStorage.getItem("tasks") // 1)gets 'tasks' items from local storage
 if (savedTasks) {
     tasks = JSON.parse(savedTasks); // 2) de-stringifies extracted data from Local Storage and stores in 'tasks' array
     renderTask(); // 3) calls function 'renderTask()' to render 'tasks' items stored in array
 }
 
-
-
-///////////////////////////////////////// local storage ////////////////////////
-/*
-inputBtn.addEventListener("click", function() {
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
-    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
-    renderLeads()
-   
-    // To verify that it works:
-    //console.log( localStorage.getItem("myLeads") ) // 1) one way to verify and got confirmation that the array items are being extracted
-    //let leadsFromLocalStorage = localStorage.getItem("myLeads") //2) another way is to store it in a variable and...
-    //console.log(leadsFromLocalStorage) //3) the verify and get confirmation that the array items are being extracted by console.logging out the variable
-   
-    localStorage.clear()
-
-    let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads")) //4) a 3rd way to extract the data from local storage BUT HERE we converting back to non-string data.
-    console.log(leadsFromLocalStorage) //5) the verify and get confirmation that the array items are being extracted by console.logging out the variable.
-})
-    */
-
-//////////////////////////////////////////////////////////////////////////////////
-
+// adding an event listener to the 'btnEl' element for 'Add task' button functionality
 btnEl.addEventListener("click", addNewtask)
 
+// creating function 'addNewtask' that when called by the 'btnEl' button
+// - takes 4 parameters whose arguments are used to make up the object 'newTask'
+// - stores the assignement due date, converts it into an arithmetic value, and then compares that value to today's date (also as an arithmetic value)
+// - so that if condition 'assignmentDate < Date.now())' is true, it assigns the string value "overdue" to the 'newTask' key:value 'status'
+// - then pushes the entire 'newTask' object (with the updated key value) to the 'tasks' array
+// - then it stringifies and saves items from the 'tasks' array to Local Storage
+// - then finally calls renderTask() function to display these changes onto the page
 function addNewtask(category, task, deadline, status) {
 
     let newTask = {
@@ -50,38 +35,35 @@ function addNewtask(category, task, deadline, status) {
         status: document.getElementById("status").value
     }
 
-
     let assignmentDate = new Date(newTask.deadline + "T23:59:59").getTime();
     if (assignmentDate < Date.now()) {
         newTask.status = "overdue"
-        console.log(newTask.status)
+        //console.log(newTask.status)
     }
 
     tasks.push(newTask)
-    console.log(newTask)
+    //console.log(newTask)
 
-
-
-    
     // LS-1A: stringifies and pushes items from array to Local Storage
     localStorage.setItem("tasks", JSON.stringify(tasks)) // When "Add task" button is clicked, this saves the new task to Local Storage
-
-    /*
+    /* SCRATCHPAD:
     localStorage.setItem("tasks", JSON.stringify(tasks) )
     console.log(localStorage.getItem("tasks"))
     //localStorage.clear()  
     let tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"))
      console.log(tasksFromLocalStorage) 
     */
-
-     
     renderTask()
     return newTask
-
 }
 
-//  console.log(addNewtask("Module 1", "Lab 1", "10-10-26", "completed"))
-
+// creating function 'checkOverDueTasks' that when invoked:
+// - it loops through the tasks array's existing items
+// -- fetches the assignment's due date of each array item
+// -- converts it into an arithmetic value and store it into variable 'assignmentDateTwo'
+// -- and then compares that value to today's date (also as an arithmetic value)
+// - so that if condition 'assignmentDateTwo < Date.now())' is true, it assigns the string value "overdue" to the 'status' key of the current 'tasks' array item
+// - then it stringifies and saves the object items from 'tasks' array to Local Storage
 function checkOverDueTasks() {
     //let assignmentDateTwo  = new Date(newTask.deadline + "T23:59:59").getTime();
     //let assignmentDateTwo  = new Date(tasks[2] + "T23:59:59").getTime();
@@ -100,8 +82,9 @@ function checkOverDueTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks)); //when a task's status in 'tasks' becomes overdue, this saves the change in status Local Storage
 }
 
+// adding an event listener to the 'btnElTwo' element for 'Search' button functionality
 btnElTwo.addEventListener("click", searchBy)
-/*
+/* SCRATCHPAD:
 function searchBy(){
     taskListElTwo.innerHTML = "" 
     for (let i = 0; i < tasks.length; i++) {
@@ -160,30 +143,28 @@ function searchBy() {
     }
 }
 
-
+//creating a function 'renderTask()' that;
+//-  loops through the tasks array's existing items
+//-- creates a virtual empty list item (empty element) on the webpage for each 'tasks' item and stores them in the list item element 'liEl'
+//-- inserts each of the 'tasks' current items into that virtual empty list item (empty element) on the webpage, efectively rendering them.
 function renderTask() {
 
     checkOverDueTasks()
     //inputEl.value = "" //go back to this as it is not clearing my fields once I click the button!!!!!!
     taskListEl.innerHTML = "" //clears the list so it can be re-rendered without duplicating items
 
-
     for (let i = 0; i < tasks.length; i++) {
         let liEl = document.createElement("li")
         /*liEl.textContent = tasks[i]*/
-
-
         liEl.innerHTML =
             `<strong>Category</strong>: ${tasks[i].category}<br>             
             <strong>Task name</strong>: ${tasks[i].task}<br>
             <strong>Deadline</strong>: ${tasks[i].deadline}<br>
             <strong>Status</strong>: ${tasks[i].status}<br>
         `
-
+        // creating a selection box 'selectEl' that when option is changed, it calls an internal function 'updateStatus()'
         let selectEl = document.createElement("select");
-
-
-
+         // declaring and initializing array 'statuses'
         let statuses = ["inprogress", "completed", "overdue"]
 
         statuses.forEach(status => {                        // for each an every 'status' in 'statuses' array....
@@ -195,44 +176,41 @@ function renderTask() {
             selectEl.appendChild(option);   //...then display the option selected
         })
 
-
-        selectEl.addEventListener("change", function () {  //adding an event listener to the selection box 'selectEl' that when option is 'changed' it calls an internal function() 'updateStatus'
-            updateStatus(i, this.value);   //...changes the status to the want desired
+        selectEl.addEventListener("change", function () {  //adding an event listener to the selection box 'selectEl' that when option is 'changed' it calls an internal function 'updateStatus'
+            updateStatus(i, this.value);   //<---changes the status to the want desired
         });
-
 
         function updateStatus(i, newStatus) {
             tasks[i].status = newStatus;
-            console.log(tasks)
+            //console.log(tasks)
             // Save updated tasks to local storage
             localStorage.setItem("tasks", JSON.stringify(tasks));
             renderTask();
         }
-
-
+        //inserts the selected options of the 'selectEl' element variable into the 'liEl' element of EACH list item on the webpage.
         liEl.appendChild(selectEl);
+        //then inserts those list items into the unordered list 'taskListEl', resulting in the rendering the results onto the webpage
         taskListEl.appendChild(liEl);
-
     }
-
-
 }
 
-        /*
+/*
+//////////////////////////// Scratchpad //////////////////////////////
+#
+console.log(Date.now())
 
-        //////////////////////////// Scratchpad //////////////////////////////
+const friendlyDate = new Date(Date.now()).toLocaleDateString();
+console.log(friendlyDate);
 
-        console.log(Date.now())
+console.log(new Date());
+console.log(new Date(Date.now()));
+console.log(new Date(Date.now()).toLocaleDateString());
 
-        const friendlyDate = new Date(Date.now()).toLocaleDateString();
-        console.log(friendlyDate);
+console.log(date.getTime())
+const deadlineTimestamp = new Date(task.deadline).getTime();
 
-        console.log(new Date());
-        console.log(new Date(Date.now()));
-        console.log(new Date(Date.now()).toLocaleDateString());
+#
+console.log(addNewtask("Module 1", "Lab 1", "10-10-26", "completed"))
 
-        console.log(date.getTime())
-        const deadlineTimestamp = new Date(task.deadline).getTime();
-
-        ///////////////////////////
-        */
+///////////////////////////
+*/
