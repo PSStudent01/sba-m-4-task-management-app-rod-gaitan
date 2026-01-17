@@ -1,0 +1,18 @@
+Reflection
+
+1) Challenges faced during the project
+One of the most tedious challenges I faced at the beginning of the project was storing and retrieving data from local storage. After learning that local storage only accepts string data, converting my data into strings for storage purposes was still challenging at first. 
+
+Another challenge was understanding the relationships between the various functions—specifically when and whether to call one function from within another. This was an area I needed to become more comfortable with.
+
+2) How I approached solving those challenges
+I overcame these challenges through trial and error and by researching best practices and examples. This process helped me better understand not only how to structure my functions correctly, but also why doing so is important. For example, improving efficiency and writing more fluid, DRYer code were key reasons for taking the time to learn this properly. Also the after-class hours with Quinn helped with this issues as well.
+
+3) What I would improve if given more time
+If given more time, I would focus on improving:
+- the overall styling of the page,
+- accessibility features,
+- and the responsiveness of the application across different screen sizes.
+
+
+

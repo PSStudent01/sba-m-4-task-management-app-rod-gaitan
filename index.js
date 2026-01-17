@@ -164,7 +164,7 @@ function renderTask() {
         `
         // creating a selection box 'selectEl' that when option is changed, it calls an internal function 'updateStatus()'
         let selectEl = document.createElement("select");
-         // declaring and initializing array 'statuses'
+        // declaring and initializing array 'statuses'
         let statuses = ["inprogress", "completed", "overdue"]
 
         statuses.forEach(status => {                        // for each an every 'status' in 'statuses' array....
